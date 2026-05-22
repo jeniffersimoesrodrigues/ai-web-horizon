@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TendenciasRouteImport } from './routes/tendencias'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProfissaoRouteImport } from './routes/profissao'
 import { Route as OdsRouteImport } from './routes/ods'
 import { Route as ContatosRouteImport } from './routes/contatos'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TendenciasRoute = TendenciasRouteImport.update({
   id: '/tendencias',
   path: '/tendencias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfissaoRoute = ProfissaoRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/contatos': typeof ContatosRoute
   '/ods': typeof OdsRoute
   '/profissao': typeof ProfissaoRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tendencias': typeof TendenciasRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/contatos': typeof ContatosRoute
   '/ods': typeof OdsRoute
   '/profissao': typeof ProfissaoRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tendencias': typeof TendenciasRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,28 @@ export interface FileRoutesById {
   '/contatos': typeof ContatosRoute
   '/ods': typeof OdsRoute
   '/profissao': typeof ProfissaoRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tendencias': typeof TendenciasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contatos' | '/ods' | '/profissao' | '/tendencias'
+  fullPaths:
+    | '/'
+    | '/contatos'
+    | '/ods'
+    | '/profissao'
+    | '/sitemap.xml'
+    | '/tendencias'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contatos' | '/ods' | '/profissao' | '/tendencias'
-  id: '__root__' | '/' | '/contatos' | '/ods' | '/profissao' | '/tendencias'
+  to: '/' | '/contatos' | '/ods' | '/profissao' | '/sitemap.xml' | '/tendencias'
+  id:
+    | '__root__'
+    | '/'
+    | '/contatos'
+    | '/ods'
+    | '/profissao'
+    | '/sitemap.xml'
+    | '/tendencias'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +98,7 @@ export interface RootRouteChildren {
   ContatosRoute: typeof ContatosRoute
   OdsRoute: typeof OdsRoute
   ProfissaoRoute: typeof ProfissaoRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TendenciasRoute: typeof TendenciasRoute
 }
 
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/tendencias'
       fullPath: '/tendencias'
       preLoaderRoute: typeof TendenciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profissao': {
@@ -124,6 +154,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatosRoute: ContatosRoute,
   OdsRoute: OdsRoute,
   ProfissaoRoute: ProfissaoRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TendenciasRoute: TendenciasRoute,
 }
 export const routeTree = rootRouteImport
