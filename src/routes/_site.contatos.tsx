@@ -60,7 +60,7 @@ function ContatosPage() {
             </div>
           </article>
         ))}
-      </section>
+      </div>
 
       <section className="mt-16 rounded-3xl border border-border bg-card p-10 text-center">
         <h2 className="text-2xl font-bold">Quer falar com o grupo?</h2>
