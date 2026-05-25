@@ -13,10 +13,10 @@ export const Route = createFileRoute("/contatos")({
 });
 
 const members = [
-  { name: "Integrante 1", role: "Pesquisa & Conteúdo", links: { LinkedIn: "#", GitHub: "#", Email: "mailto:contato@exemplo.com" } },
-  { name: "Integrante 2", role: "Design & UX", links: { LinkedIn: "#", GitHub: "#", Email: "mailto:contato@exemplo.com" } },
-  { name: "Integrante 3", role: "Desenvolvimento Web", links: { LinkedIn: "#", GitHub: "#", Email: "mailto:contato@exemplo.com" } },
-  { name: "Integrante 4", role: "IA & Dados", links: { LinkedIn: "#", GitHub: "#", Email: "mailto:contato@exemplo.com" } },
+  { name: "Jennifer Simões", role: "Pesquisa & Conteúdo", links: { GitHub: "https://github.com/jeniffersimoesrodrigues" } },
+  { name: "João Louzada", role: "Design & UX", links: { GitHub: "https://github.com/joaolouzadajv" } },
+  { name: "Integrante 3", role: "Desenvolvimento Web", links: { GitHub: "#" } },
+  { name: "Integrante 4", role: "IA & Dados", links: { GitHub: "#" } },
 ];
 
 function ContatosPage() {
